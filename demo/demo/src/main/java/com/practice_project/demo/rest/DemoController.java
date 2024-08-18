@@ -11,18 +11,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     private Coach myCoach;
     private Coach anotherCoach;
+    private Coach trackCoach;
+    private Coach swimCoach;
     @Autowired
     public DemoController (@Qualifier("cricketCoach") Coach theCoach,
-                           @Qualifier("cricketCoach") Coach theAnotherCoach )
+                           @Qualifier("cricketCoach") Coach theAnotherCoach,
+                           @Qualifier("trackCoach") Coach theTrackCoach,
+                           @Qualifier("swimCoach") Coach theSwimCoach)
     {
         System.out.println("In Constr. of: " + getClass().getSimpleName());
         myCoach =theCoach;
         anotherCoach=theAnotherCoach;
+        trackCoach = theTrackCoach;
+        swimCoach = theSwimCoach;
     }
     @GetMapping("/dailyworkout")
     public String getDailyWorkout()
     {
-        return myCoach.getDailyWorkout();
+        return swimCoach.getDailyWorkout();
     }
     @GetMapping("/check")
     public String checkEquality()
