@@ -24,8 +24,17 @@ public class DemoApplication {
         return runner -> {
             //createStudent(studentDAO);
             //readStudent(studentDAO);
-            readAllStudents(studentDAO);
+            //readAllStudents(studentDAO);
+            readStudentsByLastName(studentDAO);
         };
+    }
+
+    private void readStudentsByLastName(StudentDAO studentDAO) {
+        List<Student> studList = studentDAO.findByLastName("deulkar");
+        for(Student tempStud:studList)
+        {
+            System.out.println(tempStud);
+        }
     }
 
     private void readAllStudents(StudentDAO studentDAO) {
