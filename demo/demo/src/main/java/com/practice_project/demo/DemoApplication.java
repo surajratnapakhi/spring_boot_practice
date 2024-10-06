@@ -25,8 +25,19 @@ public class DemoApplication {
             //createStudent(studentDAO);
             //readStudent(studentDAO);
             //readAllStudents(studentDAO);
-            readStudentsByLastName(studentDAO);
+            //readStudentsByLastName(studentDAO);
+            updateStudent(studentDAO);
         };
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+        int studentID=1;
+        Student theStudent = studentDAO.findById(studentID);
+        System.out.println("Updating student: "+theStudent);
+        theStudent.setFirstName("Dhanu");
+        studentDAO.update(theStudent);
+        Student sameStudent = studentDAO.findById(studentID);
+        System.out.println("After update: "+sameStudent);
     }
 
     private void readStudentsByLastName(StudentDAO studentDAO) {
