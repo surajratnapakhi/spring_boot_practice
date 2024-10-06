@@ -26,8 +26,16 @@ public class DemoApplication {
             //readStudent(studentDAO);
             //readAllStudents(studentDAO);
             //readStudentsByLastName(studentDAO);
-            updateStudent(studentDAO);
+            //updateStudent(studentDAO);
+            deleteStudent(studentDAO);
         };
+    }
+
+    private void deleteStudent(StudentDAO studentDAO) {
+        int id = 3;
+        Student student = studentDAO.findById(id);
+        System.out.println("deleting student with id: "+id+" :: "+student);
+        studentDAO.delete(id);
     }
 
     private void updateStudent(StudentDAO studentDAO) {
