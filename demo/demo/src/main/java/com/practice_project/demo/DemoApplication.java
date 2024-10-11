@@ -27,8 +27,14 @@ public class DemoApplication {
             //readAllStudents(studentDAO);
             //readStudentsByLastName(studentDAO);
             //updateStudent(studentDAO);
-            deleteStudent(studentDAO);
+            //deleteStudent(studentDAO);
+            deleteAllStudent(studentDAO);
         };
+    }
+
+    private void deleteAllStudent(StudentDAO studentDAO) {
+        int number = studentDAO.deleteAllStudents();
+        System.out.println("Number of deleted students: "+number);
     }
 
     private void deleteStudent(StudentDAO studentDAO) {
