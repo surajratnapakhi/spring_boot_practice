@@ -22,13 +22,13 @@ public class DemoApplication {
     public CommandLineRunner CommandLineRunner(StudentDAO studentDAO)
     {
         return runner -> {
-            //createStudent(studentDAO);
+            createStudent(studentDAO);
             //readStudent(studentDAO);
             //readAllStudents(studentDAO);
             //readStudentsByLastName(studentDAO);
             //updateStudent(studentDAO);
             //deleteStudent(studentDAO);
-            deleteAllStudent(studentDAO);
+            //deleteAllStudent(studentDAO);
         };
     }
 
@@ -75,9 +75,12 @@ public class DemoApplication {
     }
 
     private void createStudent(StudentDAO studentDAO) {
-        //Student tempStudent = new Student("suraj", "ratnaparkhi", "sr@gmail.com");
-        Student tempStudent = new Student("akash", "deulkar", "ad@gmail.com");
+        Student tempStudent = new Student("suraj", "ratnaparkhi", "sr@gmail.com");
+        Student tempStudent1 = new Student("dhanshree", "sangle", "ds@gmail.com");
+        Student tempStudent2 = new Student("akash", "deulkar", "ad@gmail.com");
 
         studentDAO.save(tempStudent);
+        studentDAO.save(tempStudent1);
+        studentDAO.save(tempStudent2);
     }
 }
