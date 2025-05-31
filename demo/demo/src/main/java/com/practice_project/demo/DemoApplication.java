@@ -22,11 +22,36 @@ public class DemoApplication {
     public CommandLineRunner CommandLineRunner(StudentDAO studentDAO)
     {
         return runner -> {
-            //createStudent(studentDAO);
+            createStudent(studentDAO);
             //readStudent(studentDAO);
             //readAllStudents(studentDAO);
-            readStudentsByLastName(studentDAO);
+            //readStudentsByLastName(studentDAO);
+            //updateStudent(studentDAO);
+            //deleteStudent(studentDAO);
+            //deleteAllStudent(studentDAO);
         };
+    }
+
+    private void deleteAllStudent(StudentDAO studentDAO) {
+        int number = studentDAO.deleteAllStudents();
+        System.out.println("Number of deleted students: "+number);
+    }
+
+    private void deleteStudent(StudentDAO studentDAO) {
+        int id = 3;
+        Student student = studentDAO.findById(id);
+        System.out.println("deleting student with id: "+id+" :: "+student);
+        studentDAO.delete(id);
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+        int studentID=1;
+        Student theStudent = studentDAO.findById(studentID);
+        System.out.println("Updating student: "+theStudent);
+        theStudent.setFirstName("Dhanu");
+        studentDAO.update(theStudent);
+        Student sameStudent = studentDAO.findById(studentID);
+        System.out.println("After update: "+sameStudent);
     }
 
     private void readStudentsByLastName(StudentDAO studentDAO) {
@@ -50,9 +75,12 @@ public class DemoApplication {
     }
 
     private void createStudent(StudentDAO studentDAO) {
-        //Student tempStudent = new Student("suraj", "ratnaparkhi", "sr@gmail.com");
-        Student tempStudent = new Student("akash", "deulkar", "ad@gmail.com");
+        Student tempStudent = new Student("suraj", "ratnaparkhi", "sr@gmail.com");
+        Student tempStudent1 = new Student("dhanshree", "sangle", "ds@gmail.com");
+        Student tempStudent2 = new Student("akash", "deulkar", "ad@gmail.com");
 
         studentDAO.save(tempStudent);
+        studentDAO.save(tempStudent1);
+        studentDAO.save(tempStudent2);
     }
 }
